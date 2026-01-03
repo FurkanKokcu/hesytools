@@ -8,7 +8,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "round-icon-new.png",
+      "src": "round-icon.png",
       "type": "image/png",
       "sizes": "512x512"
     }
