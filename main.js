@@ -356,3 +356,35 @@ function pedo(yas){
 
     document.getElementById("pedoicerik").innerHTML = html;
 }
+
+function notesfunc(){
+    const title = document.getElementById("baslik").value;
+    const comment = document.getElementById("icerik").value;
+    const notesrem = `
+            <div class="card p-3 mb-2">
+                <h3>${title}</h3>
+                <p>${comment}</p>
+                <button onclick="deleteme(this)" class="btn btn-danger btn-sm">Sil</button>
+            </div>
+        `;
+    if(title!=""){
+        document.getElementById("notesdiv").innerHTML += notesrem;
+        localStorage.setItem("notlarHTML", document.getElementById("notesdiv").innerHTML);
+        document.getElementById("baslik").value = "" ;
+        document.getElementById("icerik").value = "";
+    }else if(comment==="hesy dental suite"){
+        alert("Sanırım eskiden beri kullanıyorsun")
+    }
+}
+function deleteme(thisnote){
+    thisnote.parentElement.remove();
+    localStorage.setItem("notlarHTML", document.getElementById("notesdiv").innerHTML);
+}
+
+window.onload = function() {
+    const kayitliHTML = localStorage.getItem("notlarHTML");
+    
+    if (kayitliHTML) {
+        document.getElementById("notesdiv").innerHTML = kayitliHTML;
+    }
+}
