@@ -126,6 +126,10 @@ function ging(){
     const yuzd = Number(document.getElementById("yuz").value);
     let gingvar
     let gingind
+    if (yuzd === 0) {
+        document.getElementById("ging").innerHTML = "Yüz sayısı sıfır olamaz.";
+        return;
+    }
     gingind=(kana/yuzd)*100
     if(gingind>10){
         gingvar = "Gingivitis mevcut!"
