@@ -10,6 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <style>
     @media (prefers-color-scheme: dark) {
     /* 1. GENEL AYARLAR */
@@ -148,10 +149,47 @@ h1, h2, h3, h4, h5, h6, label, span {
     background-color: #252525;
     border-bottom: 1px solid #444;
 }
+
+/* Akordeon Kartlarını Dark Modla Uyumlu Yap */
+#herbst .card {
+    background-color: #2c2c2c !important; /* Dark arka plan */
+    border: 1px solid #444 !important;
+    color: #ffffff !important;
+}
+
+#herbst .card-header {
+    background-color: #3d3d3d !important; /* Bir tık açık gri */
+    border-bottom: 1px solid #444 !important;
+}
+
+#herbst .card-body {
+    background-color: #1e1e1e !important; /* İçerik daha koyu */
+    color: #e0e0e0 !important;
+}
+
+/* JSON'dan gelen <strong> etiketlerini belirginleştir */
+#herbst .card-body strong {
+    color: #ffc107; /* Altın sarısı/Turuncu tonu - Dark modda çok iyi okunur */
+}
+
+/* Link butonunun alt çizgisini ve rengini düzelt */
+#herbst .btn-link {
+    color: #ffffff !important;
+    text-decoration: none !important;
+}
 }
   </style>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker kayıt edildi:', reg.scope))
+        .catch(err => console.log('SW hatası:', err));
+    });
+  }
+</script>
 </head>
-<body>
+<body x-data="hesyapp">
    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
   <!-- Brand -->
   <img src="round-icon-new.png" alt="">
@@ -183,12 +221,8 @@ h1, h2, h3, h4, h5, h6, label, span {
         <a class="nav-link" data-toggle="tab" href="#konstab">Konsültasyon</a>
       </li>
 
-    <li class=" nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle" href="#2" id="navbardrop" data-toggle="dropdown">HemaCheck</a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" data-toggle="tab" href="#hematab">HemaCheck</a>
-        <a class="dropdown-item" data-toggle="tab" href="#hemamath">HemaMath</a>
-      </div>
+    <li class=" nav-item">
+        <a class="nav-link" data-toggle="tab" href="#hemamath">HemaMath</a>
     </li>
 
    <li class="nav-item dropdown">
@@ -282,116 +316,192 @@ h1, h2, h3, h4, h5, h6, label, span {
   <div id="periotab" class="container tab-pane fade text-center">
     <div class="form-group text-center">
       <label for="usr"></label>
-      <input type="number" class="form-control" id="diskaybi" placeholder="Diş Kaybı Sayısı">
-      <input type="number" class="form-control" id="atasmankaybi" placeholder="Ataşman Kaybı">
+      <input type="number" class="form-control" x-model="diskaybi" placeholder="Diş Kaybı Sayısı">
+      <input type="number" class="form-control" x-model="atasmankaybi" placeholder="Ataşman Kaybı">
       <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#sigarak" class="collapse">Sigara Kullanımı</button>
       <div id="sigarak" class="collapse">
-          <input type="number" class="form-control" id="sigara" placeholder="Sigara kullanımı">
+          <input type="number" class="form-control" x-model="sigara" placeholder="Sigara kullanımı">
       </div>
-      <button type="button" class="btn btn-primary" onclick="perio()">Hesapla</button>
-      <div id="perio"></div>
+      <button type="button" class="btn btn-primary" @click="perio()">Hesapla</button>
+      <div x-text="periosonuc"></div>
     </div>
   </div>
   <!--gingivitis-->
   <div id="gingtab" class="container tab-pane fade">
     <div class="form-group text-center">
       <label for="usr"></label>
-      <input type="number" class="form-control" id="kanama" placeholder="Kanayan yüzey sayısı">
-      <input type="number" class="form-control" id="yuz" placeholder="Yüzey sayısı">
-      <button type="button" class="btn btn-primary" onclick="ging()">Hesapla</button>
-      <div id="ging" class="mt-3 text-center"></div>
+      <input type="number" class="form-control" x-model="kanamaging" placeholder="Kanayan yüzey sayısı">
+      <input type="number" class="form-control" x-model="yuzging" placeholder="Yüzey sayısı">
+      <button type="button" class="btn btn-primary" @click="ging()">Hesapla</button>
+      <div x-text="gingsonuc" class="mt-3 text-center"></div>
     </div>
   </div>
 
   <!--Konstab-->
-  <div id="konstab" class="container tab-pane fade">
+  <div id="konstab" class="container tab-pane fade" x-data="hesyapp">
     <div class="form-group">
-      <input type="text" class="form-control" id="hastalik" placeholder="Hastalık ismini giriniz">
+      <input type="text" class="form-control" x-model="hastalik" placeholder="Hastalık ismini giriniz">
       </div>
       <div class="form-group">
-      <input type="text" class="form-control" id="islem" placeholder="Uygulanacak işlemi yazınız">
+      <input type="text" class="form-control" x-model="islem" placeholder="Uygulanacak işlemi yazınız">
       </div>
       <div class="form-check">
         <label class="form-check-label" for="check1">
-          <input type="checkbox" class="form-check-input" id="check1" name="option1" value="something">Hasta herhangi bir ilaç kullanmıyor
+          <input type="checkbox" class="form-check-input" x-model="check1" name="option1" value="something">Hasta herhangi bir ilaç kullanmıyor
         </label>
       </div>
       <br>
       <div class="form-group">
-      <input type="text" class="form-control" id="ilac" placeholder="Kullanılan ilacı giriniz">
+      <input type="text" class="form-control" x-model="ilac" placeholder="Kullanılan ilacı giriniz">
       </div>
       <div class="form-group text-center">
-      <button type="button" class="btn btn-primary" onclick="test()">Konsültasyon Oluştur!</button>
+      <button type="button" class="btn btn-primary" @click="kons()">Konsültasyon Oluştur!</button>
       </div>
-      <div id="demo" class="mt-3 text-center">
+      <div x-text="konssonuc" class="mt-3 text-center">
       </div>
   </div>
 
-<!--HemaCheck--> 
-<div id="hematab" class="container tab-pane fade">
-    <br>
-    <div class="input-group mb-3">
-        <input type="text" id="hemaarama" class="form-control" placeholder="Hastalık veya İşlem ara...">
-    </div>
 
-    <div class="table-responsive">
-        <table class="table table-dark table-hover table-striped">
-            <thead>
-                <tr>
-                    <th>Hastalık Durumu</th>
-                    <th>İşlem</th>
-                    <th>Risk</th>
-                    <th>Protokol / Notlar</th>
-                </tr>
-            </thead>
-            <tbody id="hemaTabloGovdesi">
-                </tbody>
-        </table>
-    </div>
-</div>
 
 <!--Hemamath-->
 <div id="hemamath" class="container tab-pane fade text-center">
-  <input type="number" class="form-control" id="ha1c" placeholder="Hemoglobin A1C seviyesi giriniz...">
+  <input type="number" class="form-control" x-model="ha1c" placeholder="Hemoglobin A1C seviyesi giriniz...">
   <hr>
   <label class="form-label">Tansiyon Değeri (mmHg)</label>
 
 <div class="input-group mb-3">
-  <input type="number" class="form-control" id="sysInput" placeholder="Büyük (120)">
+  <input type="number" class="form-control" x-model="sysInput" placeholder="Büyük (120)">
   <div class="input-group-append">
     <p class="input-group-text">/</p>
   </div>
-  <input type="number" class="form-control" id="diaInput" placeholder="Küçük (80)">
+  <input type="number" class="form-control" x-model="diaInput" placeholder="Küçük (80)">
 </div>
   <hr>
-  <input type="number" class="form-control" id="inr" placeholder="INR değeri giriniz... ">
+  <input type="number" class="form-control" x-model="inr" placeholder="INR değeri giriniz... ">
   <hr>
-  <input type="number" class="form-control" id="hemoglobin" placeholder="Hemoglobin değeri giriniz... ">
+  <input type="number" class="form-control" x-model="hemoglobin" placeholder="Hemoglobin değeri giriniz... ">
   <hr>
-  <button type="button" class="btn btn-primary" onclick="hemamathfunc()">Analiz Et</button>
+  <button type="button" class="btn btn-primary" @click="hemamathfunc()">Analiz Et</button>
 
-  <div id="hemaan"></div>
+  <div x-html="hemasonuc"></div>
 </div>
   <!--Herbsttab-->
-  <div id="herbst" class="container tab-pane fade">
-    <div id="herbstIcerikAlani"></div>
-  </div>
+<div id="herbst" class="tab-pane fade container mt-4">
+    
+    <template x-for="grup in herbstverileri" :key="grup.kisaKod">
+        <div class="mb-5">
+            <h3 class="text-primary border-bottom pb-2" x-text="grup.baslik"></h3>
+            
+            <div class="accordion" :id="'accordion-' + grup.kisaKod">
+                
+                <template x-for="(test, index) in grup.testler" :key="index">
+                    <div class="card mb-2 bg-dark border-secondary">
+                        
+                        <div class="card-header p-0" :id="'heading-' + grup.kisaKod + index">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link btn-block text-left p-3 font-weight-bold text-white shadow-none" 
+                                        type="button" 
+                                        data-toggle="collapse" 
+                                        :data-target="'#collapse-' + grup.kisaKod + index" 
+                                        aria-expanded="false">
+                                    <span x-text="test.soru"></span>
+                                </button>
+                            </h5>
+                        </div>
+
+                        <div :id="'collapse-' + grup.kisaKod + index" 
+                             class="collapse" 
+                             :data-parent="'#accordion-' + grup.kisaKod">
+                            
+                            <div class="card-body text-white-50 border-top border-secondary">
+                                <div x-html="test.icerik"></div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </template>
+                </div>
+        </div>
+    </template>
+    </div>
   <!--Reçeteler-->
-  <div id="receteler" class="container tab-pane fade">
-    <div id="receteIcerikAlani"></div>
-  </div>
+<div id="receteler" class="container tab-pane fade mt-4">
+    
+    <h4 class="text-primary border-bottom pb-2 mb-4 text-center">Sık Kullanılan Reçeteler</h4>
+
+    <div class="accordion" id="accordionRecete">
+        
+        <template x-for="(recete, index) in receteverileri" :key="index">
+            
+            <div class="card mb-2 bg-dark border-secondary">
+                
+                <div class="card-header p-0" :id="'heading-recete-' + index">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link btn-block text-left p-3 font-weight-bold text-white shadow-none" 
+                                type="button" 
+                                data-toggle="collapse" 
+                                :data-target="'#collapse-recete-' + index" 
+                                aria-expanded="false">
+                            <span x-text="recete.tani"></span>
+                        </button>
+                    </h5>
+                </div>
+
+                <div :id="'collapse-recete-' + index" 
+                     class="collapse" 
+                     :data-parent="'#accordionRecete'">
+                    
+                    <div class="card-body border-top border-secondary" style="background-color: #1e1e1e;">
+                        <ul class="list-group list-group-flush">
+                            
+                            <template x-for="ilac in recete.ilaclar">
+                                <li class="list-group-item d-flex justify-content-between align-items-center bg-transparent border-secondary text-white">
+                                    <div>
+                                        <strong class="text-warning" x-text="ilac.ad"></strong>
+                                        <div class="small text-muted" x-text="'Doz: ' + ilac.doz"></div>
+                                    </div>
+                                    <span class="badge badge-info badge-pill" x-text="ilac.kullanim"></span>
+                                </li>
+                            </template>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+
+    </div>
+</div>
 
   <!--PedoGuide-->
-  <div id="pedoguide" class="container tab-pane fade text-center">
-    <div id="pedoguideicerik"></div>
-    <div id="pedoicerik"></div>
-  </div>
+<div id="pedoguide" class="container tab-pane fade text-center mt-4">
 
+    <div class="d-flex justify-content-center flex-wrap mb-4" style="gap: 10px;">
+        <template x-for="grup in pedoguideverileri" :key="grup.yas">
+            <button class="btn btn-primary"
+                    :class="secilenPedo === grup "
+                    @click="secilenPedo = grup"
+                    x-text="grup.yas">
+            </button>
+        </template>
+    </div>
+        
+        <div class="card-body">
+            <ul class="list-group list-group-flush text-left">
+                <template x-for="madde in (secilenPedo ? secilenPedo.bilgiler : [])">
+                        <p x-text="madde"></p>
+                </template>
+            </ul>
+        </div>
+
+</div>
+  <!--Notlar-->
   <div id="notes" class="container tab-pane fade text-center">
-    <input type="text" class="form-control" id="baslik" placeholder="Not başlığı">
-    <textarea class="form-control" rows="5" id="icerik" placeholder="Not içeriği girin"></textarea>
-    <button type="button" class="btn btn-primary" onclick="notesfunc()">Not oluştur</button>
-    <div id="notesdiv"></div>
+    <input type="text" class="form-control" x-model="baslik" placeholder="Not başlığı">
+    <textarea class="form-control" rows="5" x-model="icerik" placeholder="Not içeriği girin"></textarea>
+    <button type="button" class="btn btn-primary" @click="notesfunc()">Not oluştur</button>
+    <div id="notesdiv" class="mt-4 text-left text-center" x-html="notesdiv"></div>
   </div>
 
   <!--Hakkında-->
@@ -412,10 +522,6 @@ h1, h2, h3, h4, h5, h6, label, span {
 </div>
 
 </div>
-<script src="hemadata.js"></script>
-<script src="receteler.js"></script>
-<script src="herbst.js"></script>
-<script src="pedoguide.js"></script>
 <script src="main.js"></script>
 
 
