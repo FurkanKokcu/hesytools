@@ -216,6 +216,11 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
                 return;
             }
 
+            if (this.baslik === "") {
+                alert("Lütfen notuna bir başlık gir.");
+                return;
+            }
+
             const yeniNot = `
             <div class="card p-3 mb-2">
                 <h3>${this.baslik}</h3>
