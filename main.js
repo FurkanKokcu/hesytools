@@ -70,20 +70,23 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
         baslik:'',
         icerik:'',
         notesdiv:'',
+        updates:[],
 
 
         async init(){
             try{
-                const [lathasanswer, herbstanswer, receteanswer, pedoanswer]= await Promise.all([
+                const [lathasanswer, herbstanswer, receteanswer, pedoanswer, changelog]= await Promise.all([
                     fetch('lathas.json'),
                     fetch('herbst.json'),
                     fetch('receteler.json'),
-                    fetch('pedoguide.json')
+                    fetch('pedoguide.json'),
+                    fetch('changelog.json')
                 ])
                 this.lathassozluk = await lathasanswer.json();
                 this.herbstverileri = await herbstanswer.json();
                 this.receteverileri = await receteanswer.json();
                 this.pedoguideverileri = await pedoanswer.json();
+                this.updates = await changelog.json();
                 this.initNotes();
             }
             catch(hata){
@@ -238,6 +241,7 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
             this.baslik = "";
             this.icerik = "";
         }
+        
 
     }))
  })
