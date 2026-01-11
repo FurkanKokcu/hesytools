@@ -45,5 +45,18 @@
       { "ad": "Tilcotil 20 mg/2 ml IM/IV Liyofize Toz İçeren Flakon", "doz": "1B (bir)", "kullanim": "1x1" },
       { "ad": "Dekort 8 mg/2 ml IM/IV Enjeksiyonluk Çözelti", "doz": "1B (bir)", "kullanim": "1x1" }
     ]
+  },
+    {
+    "tani": "Sıkça Kullanılan İlaçlar",
+    "id": "sikca",
+    "ilaclar": [
+      { "ad": "Augmentin-BID 1000 mg 10 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Flagyl 500 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Macrol 500 mg 14 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Parol 500 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Arveles 25 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "2x1" },
+      { "ad": "Kloroben Gargara", "doz": "1B (bir)", "kullanim": "3x1" },
+      { "ad": "Brufen 600 mg 20 film tablet", "doz": "1B (bir)", "kullanim": "3x1" }
+    ]
   }
 ]
