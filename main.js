@@ -35,11 +35,6 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
         }
     });
 
-    function deleteme(thisnote){
-        thisnote.parentElement.remove();
-        localStorage.setItem("notlarHTML", document.getElementById("notesdiv").innerHTML);
-    }
-    
 
  document.addEventListener('alpine:init', () => {
     Alpine.data('hesyapp', () => ({
@@ -67,36 +62,37 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
         pedoguideicerik:'',
         pedoguideverileri: [],
         secilenPedo: null,
-        baslik:'',
-        icerik:'',
-        notesdiv:'',
         updates:[],
+        user:'',
+        status:'',
+        yolcheck:'',
+        alergycheck:'',
+        kilo:'',
+        profilaksisonuc:'',
+        
 
 
         async init(){
             try{
-                const [lathasanswer, herbstanswer, receteanswer, pedoanswer, changelog]= await Promise.all([
+                const [lathasanswer, herbstanswer, receteanswer, pedoanswer,]= await Promise.all([
                     fetch('lathas.json'),
                     fetch('herbst.json'),
                     fetch('receteler.json'),
                     fetch('pedoguide.json'),
-                    fetch('changelog.json')
+                    
                 ])
                 this.lathassozluk = await lathasanswer.json();
                 this.herbstverileri = await herbstanswer.json();
                 this.receteverileri = await receteanswer.json();
                 this.pedoguideverileri = await pedoanswer.json();
-                this.updates = await changelog.json();
-                this.initNotes();
+                this.user = localStorage.getItem("username") || "";
+
             }
             catch(hata){
                 console.error("Dosya okunamadı:", hata)
             }
         },
 
-        initNotes() {
-            this.notesdiv = localStorage.getItem("notlarHTML") || "";
-        },
 
         perio(){
             let evre;
@@ -212,34 +208,36 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
                 `;
         },
 
-        notesfunc() {
-            if (this.icerik === "hesy dental suite") {
-                alert("Sanırım eskiden beri kullanıyorsun");
-                this.icerik = ""; 
-                return;
+        settingsfunc(){
+            localStorage.setItem("username", this.user)
+            this.status="Kaydedildi"
+        },
+
+        profilaksifunc() {
+            const kilo = this.kilo;
+            const { yolcheck, alergycheck } = this;
+            let prohesap;
+            let ilac;
+
+            if (yolcheck) {
+                if (alergycheck) {
+                    prohesap = Math.min(kilo * 15, 500);
+                    ilac = "Azitromisin";
+                } else {
+                    prohesap = Math.min(kilo * 50, 2000);
+                    ilac = "Amoksisilin";
+                }
+            } else { 
+                if (alergycheck) {
+                    prohesap = Math.min(kilo * 20, 600);
+                    ilac = "Klindamisin";
+                } else {
+                    prohesap = Math.min(kilo * 50, 2000);
+                    ilac = "Ampisilin";
+                }
             }
 
-            if (this.baslik === "") {
-                alert("Lütfen notuna bir başlık gir.");
-                return;
-            }
-
-            const yeniNot = `
-            <div class="card p-3 mb-2">
-                <h3>${this.baslik}</h3>
-                <p>${this.icerik}</p>
-                <button onclick="deleteme(this)" class="btn btn-danger btn-sm">Sil</button>
-            </div>
-        `;
-
-            this.notesdiv += yeniNot;
-
-            // 5. LocalStorage'a "HTML" olarak kaydet
-            localStorage.setItem("notlarHTML", this.notesdiv);
-
-            // 6. Kutuları temizle
-            this.baslik = "";
-            this.icerik = "";
+            this.profilaksisonuc = `Yapılacak işlemden 30-60 dakika önce ${prohesap} mg ${ilac} kullanılmalı!`;
         }
         
 
