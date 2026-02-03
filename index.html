@@ -240,12 +240,16 @@ h1, h2, h3, h4, h5, h6, label, span {
       <a class="nav-link" data-toggle="tab" href="#receteler">Reçeteler</a>
     </li>
 
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#pedoguide">PedoGuide</a>
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" href="#">PedoTools</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" data-toggle="tab" href="#pedoguide">PedoGuide</a>
+        <a class="dropdown-item" data-toggle="tab" href="#profilaksi">Profilaksi Hesaplayıcı</a>
+      </div>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#notes">Notlar</a>
+      <a class="nav-link" data-toggle="tab" href="#settings">Ayarlar</a>
     </li>
 
       <li class="nav-item">
@@ -260,18 +264,14 @@ h1, h2, h3, h4, h5, h6, label, span {
   <div id="main" class="container tab-pane active">
     <div class="text-center">
     <h1>Hoş Geldiniz</h1>
+    <h2 x-text="user"></h2>
     <p>For a reason, for health</p>
+
     <img src="mainlogo-Photoroom.png" class="img-fluid">
     </div>
     <div>
-      <button data-toggle="collapse" data-target="#changelog" class="btn btn-outline-info btn-block">Sürüm notları</button>
+      
       <div id="changelog" class="collapse">
-         <ul class="list-group list-group-flush">
-          <li class="list-group-item">jQuery altyapısı tamamen kaldırılarak sistem Alpine.js ile yeniden yazıldı.</li>
-          <li class="list-group-item">Service Worker (sw.js) entegrasyonu yapıldı; uygulama artık WebApp (PWA) olarak çalışabilir.</li>
-          <li class="list-group-item">Hantal görsel logo kaldırılarak arayüz sadeleştirildi ve performans artırıldı.</li>
-          <li class="list-group-item">Veri çekme işlemleri optimize edildi, açılış hızı artırıldı.</li>
-        </ul> 
       </div>
     </div>
     
@@ -295,7 +295,11 @@ h1, h2, h3, h4, h5, h6, label, span {
       </form>
       <input type="number" class="form-control" x-model="diskaybi" placeholder="Diş Kaybı Sayısı">
       <input type="number" class="form-control" x-model="atasmankaybi" placeholder="Ataşman Kaybı">
-      <button type="button" class="btn btn-danger" data-toggle="collapse" data-target="#sigarak" class="collapse">Sigara Kullanımı</button>
+
+      <div class="custom-control custom-switch" data-toggle="collapse" data-target="#sigarak" class="collapse">
+        <input type="checkbox" class="custom-control-input" id="switch1" name="example">
+        <label class="custom-control-label" for="switch1">Sigara Kullanımı</label>
+      </div>    
       <div id="sigarak" class="collapse">
           <input type="number" class="form-control" x-model="sigara" placeholder="Sigara kullanımı">
       </div>
@@ -456,7 +460,7 @@ h1, h2, h3, h4, h5, h6, label, span {
 
     <div class="d-flex justify-content-center flex-wrap mb-4" style="gap: 10px;">
         <template x-for="grup in pedoguideverileri" :key="grup.yas">
-            <button class="btn btn-primary"
+            <button class="btn-group btn-primary btn-sm"
                     :class="secilenPedo === grup "
                     @click="secilenPedo = grup"
                     x-text="grup.yas">
@@ -473,13 +477,35 @@ h1, h2, h3, h4, h5, h6, label, span {
         </div>
 
 </div>
-  <!--Notlar-->
-  <div id="notes" class="container tab-pane fade text-center">
-    <input type="text" class="form-control" x-model="baslik" placeholder="Not başlığı">
-    <textarea class="form-control" rows="5" x-model="icerik" placeholder="Not içeriği girin"></textarea>
-    <button type="button" class="btn btn-primary" @click="notesfunc()">Not oluştur</button>
-    <div id="notesdiv" class="mt-4 text-left text-center" x-html="notesdiv"></div>
+
+  <!--Profilaksi-->
+  
+<div id="profilaksi" class="container tab-pane fade text-center mt-4">
+  <input class="form-control mb-3" type="number" x-model="kilo" placeholder="Çocuğun kilosunu giriniz">
+
+  <div class="custom-control custom-checkbox mb-2">
+    <input type="checkbox" class="custom-control-input" id="yol_id" x-model="yolcheck">
+    <label class="custom-control-label" for="yol_id">Oral yolla ilaç alınabiliyor</label>
   </div>
+
+  <div class="custom-control custom-checkbox mb-3">
+    <input type="checkbox" class="custom-control-input" id="alerji_id" x-model="alergycheck">
+    <label class="custom-control-label" for="alerji_id">Penisiline alerji mevcut</label>
+  </div>
+
+  <button class="btn btn-primary" @click="profilaksifunc()">Hesapla</button>
+
+  <p class="mt-3 font-weight-bold" x-text="profilaksisonuc"></p>
+</div>
+
+  <!--Ayarlar-->
+<div id="settings" class="container tab-pane fade text-center mt-4">
+  <div class="input-group">
+    <input type="text" class="form-control" x-model="user" placeholder="Kullanıcı İsmi">
+    <button class="btn btn-primary" @click="settingsfunc()">Kaydet</button>
+  </div>
+  <p x-text="status"></p>
+</div>
 
   <!--Hakkında-->
   <div id="about" class="container tab-pane fade">
