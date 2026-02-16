@@ -245,6 +245,7 @@ h1, h2, h3, h4, h5, h6, label, span {
       <div class="dropdown-menu">
         <a class="dropdown-item" data-toggle="tab" href="#pedoguide">PedoGuide</a>
         <a class="dropdown-item" data-toggle="tab" href="#profilaksi">Profilaksi Hesaplayıcı</a>
+        <a class="dropdown-item" data-toggle="tab" href="#travma">Travma Yardımcısı</a>
       </div>
     </li>
 
@@ -496,6 +497,308 @@ h1, h2, h3, h4, h5, h6, label, span {
   <button class="btn btn-primary" @click="profilaksifunc()">Hesapla</button>
 
   <p class="mt-3 font-weight-bold" x-text="profilaksisonuc"></p>
+</div>
+
+<!--Travma-->
+<div id="travma" class="container tab-pane fade text-center mt-4" x-data="{ adim: 1 }">
+  
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 1" x-transition>
+    <div>
+      <h4>Diş yuvadan (soketinden) tamamen çıkmış mı?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#fiqu">Evet</button>
+      <div id="fiqu" class="collapse mt-2">🚨 Sonuç: AVÜLSİYON
+        <div style="white-space: pre-wrap;">
+🦷 AVÜLSİYON ACİL PROTOKOLÜ (TÜM VAKALAR)
+
+Temizlik: Dişi serum fizyolojik veya klorheksidin ile nazikçe yıka.
+
+Anestezi & Yuva: Vazokonstriktörsüz anestezi yap, soketi yıka.
+
+Fiksasyon: Parmak basısıyla yerleştir, radyografi al, 2 hafta esnek splint yap (Alveol kırığı varsa 4 hafta ).
+
+Reçete: Sistemik antibiyotik, klorheksidin gargara, yumuşak diyet, tetanoz kontrolü.
+        </div>
+        <details>
+          <summary>⏱️ DURUM 1: Kuru Kalma < 60 Dk (veya olay yerinde takılan)</summary>
+          <div style="white-space: pre-wrap;">
+Açık Apeks (Kök Gelişmemiş):
+Kanal tedavisine HEMEN BAŞLAMA (canlanma bekle).
+Takipte nekroz gelişirse: Apeksifikasyon / Revaskülarizasyon.
+
+Kapalı Apeks (Kök Gelişmiş):
+7-10 gün içinde (splintliyken) kanal tedavisine başla.
+4-8 hafta kanalda kalsiyum hidroksit beklet, sonra daimi dolgu yap.
+          </div>
+        </details>
+        <details>
+          <summary>⏱️ DURUM 2: Kuru Kalma > 60 Dk (Ankiloz Beklenir)</summary>
+          <div style="white-space: pre-wrap;">
+(Amaç: Kemik yüksekliğini ve estetiği geçici de olsa korumak )
+Açık Apeks (Kök Gelişmemiş):
+Revaskülarizasyon beklenir ancak nekroz/enfeksiyon görüldüğü an apeksifikasyon veya kanal tedavisine başla.
+
+Kapalı Apeks (Kök Gelişmiş):
+7-10 gün içinde kanal tedavisine başla.
+4-8 hafta kanalda kalsiyum hidroksit beklet, sonra daimi dolgu yap.
+          </div>
+        </details>
+      </div>
+      
+      
+      <button @click="adim = 2" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+    </div>
+  </div>
+
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 2" x-transition style="display: none;">
+    <div>
+      <h4>Dişte yuvada yer değiştirme (displasman) var mı?</h4>
+      <button @click="adim = 3" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Evet</button>
+      <button @click="adim = 6" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+    </div>
+  </div>
+
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 3" x-transition style="display: none;">
+    <div>
+      <h4>Yer değiştiren bu dişte mobilite (sallanma) var mı?</h4>
+      <button @click="adim = 4" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Evet</button>
+      <button @click="adim = 5" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+    </div>
+  </div>
+
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 4" x-transition style="display: none;">
+    <div>
+      <h4>Sallanma tek dişte mi, yoksa blok halinde mi?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#foqu">BİRDEN FAZLA DİŞ (Birlikte hareket ediyor)</button>
+      <div id="foqu" class="collapse mt-2">🚨 Sonuç: ALVEOL KIRIĞI
+        <details>
+          <div style="white-space: pre-wrap;">
+Soketin Öncelikli Repozisyonu: Alveol soket duvarında bir kırık tespit edilirse, dişi yerleştirmeden önce uygun bir aletle kırık kemik parçası orijinal konumuna getirilmelidir. Eğer dişi yerine oturturken bir dirençle karşılaşılıyorsa, bu durum labial alveol kemik kırığına işaret eder ve dişten önce alveol soketinin repozisyonu yapılmalıdır.
+
+Splint Süresinin Uzatılması: Tedavi protokolünü değiştiren en önemli detay budur. Marjinal kemik (alveol) kırığının eşlik ettiği durumlarda, normalde 2 hafta olan esnek splintleme süresi 3-4 haftaya , avülsiyon vakalarında ise net olarak 4 haftaya uzatılmalıdır.
+
+İyileşme (Klinik Not): Kök kırıklarıyla birlikte görülen alveol kırıkları çoğunlukla sorunsuz bir şekilde iyileşir.
+          </div>
+        </details>        
+      </div>
+
+      <button @click="adim = '4a'" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">SADECE TEK DİŞ</button>
+    </div>
+  </div>
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === '4a'" x-transition style="display: none;">
+    <div>
+      <h4>Röntgende kök kırığı bulgusu var mı?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#fiqu">Evet</button>
+      <div id="fiqu" class="collapse mt-2">🚨 Sonuç: KÖK KIRIĞI
+        <details>
+          <summary>⚡ KÖK KIRIĞI ACİL PROTOKOLÜ</summary>
+          <div style="white-space: pre-wrap;">
+1. Teşhis ve Test Uyarısı
+Röntgen: Tek açı yetmez! Kırık hattını gözden kaçırmamak için en az 3 farklı açıda (45°, 90°, 110°) radyografi alınmalıdır .
+Vitalite: İlk 2-6 ay güvenilir değildir (Pulpanın iyileşmesi 12 ayı bulabilir, hemen kanal tedavisine atlanmaz) .
+
+2. Acil Müdahale ve Splint Süreleri
+(Yer değiştiren koronal parça parmak/forseps baskısıyla yerine oturtulur . Direnç varsa labial kemik kırığı olabilir, önce alveol soketini düzelt! )
+Genel Kök Kırıkları: Yerine oturt ve 2-4 hafta esnek splint uygula . (Mobilite hiç yoksa splinte gerek kalmayabilir ).
+Servikal (Boyun) Üçlüsündeki Kırıklar: Kırık kret tepesinden uzak ama servikale yakınsa splint süresini 4 aya kadar uzat .
+Kret Seviyesi veya Üzeri Kırıklar: Prognoz kötüdür. Koronal (üst) parçayı çek, kök (apikal) parçası için ortodontik/cerrahi ekstrüzyon (dışarı çekme) planla .
+
+3. İleri Dönem Tedavi (Nekroz Gelişirse)
+Takipte pulpa ölürse (radyolusensi, fistül, ağrı vb.), kanal tedavisi SADECE kırık hattına kadar olan üst (koronal) parçaya yapılır .
+Üst parçanın kök ucuna Kalsiyum Hidroksit veya MTA ile sert doku bariyeri kurulur .
+Alttaki (apikal) parça genelde canlı kalır ve kendi kendine tıkanır (obliterasyon), o kısma dokunulmaz .
+          </div>
+        </details>        
+      </div>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#siqu">Hayır</button>
+      <div id="siqu" class="collapse mt-2">🚨 Sonuç: EKSTRÜZYON
+        <details>
+          <summary>⚡ EKSTRÜZYON (DIŞARI UZAMA) ACİL PROTOKOLÜ</summary>
+          <div style="white-space: pre-wrap;">
+1. Klinik ve Radyografik Tablo
+Bulgular: Diş yuvasından dışarı (koronal yönde) uzamıştır, sallanır ve dişetinden kanama gelir. Vitalite (canlılık) testlerine çoğunlukla negatif yanıt alınır.
+Röntgen: Kök ucundaki (apikal) boşluk belirgin şekilde artmış olarak izlenir.
+
+2. Acil Müdahale ve Repozisyon (Kritik Ayrım!)
+Erken Başvuru (<24 Saat): Diş nazikçe itilerek normal pozisyonuna oturtulur (repozisyon).
+Geç Başvuru (>24 Saat) veya Pıhtı Varsa: Diş yeni pozisyonunda sabitlenmiş olabilir veya kök ucundaki kan pıhtılaşıp yerleşmeyi engelleyebilir. Dişi zorlayarak güç uygulayıp itme! Bunun yerine "kasıtlı replantasyon" yap (Dişi cerrahi olarak çekip 10 dakika içinde yuvasına geri yerleştir).
+Splint: Her iki durumda da yerine oturtma işleminden sonra 2 hafta esnek splint uygula.
+
+3. Kök Ucu (Apeks) Durumuna Göre İleri Tedavi
+Kapalı Apeks (Kök Gelişimi Tamamlanmış): Sinir dokusu daima ölür (nekroz garanti). Enfeksiyonu önlemek için beklemeden, travmadan sonraki 7-10 gün içerisinde kanal tedavisine başla.
+Açık Apeks (Kök Gelişimi Tamamlanmamış): Sinirin yeniden canlanma (revaskülarizasyon) ihtimali vardır. Hemen kanal tedavisine girme, gözlemle. Eğer takipte pulpa ölürse apeksifikasyon tedavisi uygula.
+          </div>
+        </details>      
+      </div>
+    </div>
+  </div>
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 5" x-transition style="display: none;">
+    <div>
+      <h4>Dişin yer değiştirme yönü nedir?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#sequ">İÇERİ GÖMÜLME (Intrusion)</button>
+      <div id="sequ" class="collapse mt-2">🚨 Sonuç: İNTRÜZYON
+        <details>
+          <summary>⚡ İNTRÜZYON (İÇERİ GÖMÜLME) ACİL PROTOKOLÜ</summary>
+          <div style="white-space: pre-wrap;">
+1. Klinik Tablo
+Bulgular: Diş kemik içine gömülmüştür. Sallanmaz, vurunca metalik/tiz bir ses verir. En kötü prognozlu lüksasyon tipidir.
+
+2. Açık Apeks (Kök Gelişmemiş)
+Bekle: Hemen müdahale etme, 3 hafta boyunca dişin kendi kendine sürmesini (spontan erüpsiyon) bekle.
+Sürmezse: Ortodontik veya cerrahi kuvvetle dışarı çek.
+Pulpa: Kanal tedavisi yapma, canlılığı takip et. Sadece nekroz gelişirse apeksifikasyon/revaskülarizasyon uygula.
+
+3. Kapalı Apeks (Kök Gelişmiş)
+Bekleme: Travmadan hemen sonra (2-3 hafta içinde) ortodontik veya cerrahi ekstrüzyon ile dişi yuvasından dışarı çek. (Cerrahi ekstrüzyon yaparsan 4 hafta esnek splint uygula).
+Pulpa (%100 Nekroz Beklenir): 2 hafta içinde KESİNLİKLE kanal tedavisine başla ve kanala kalsiyum hidroksit koy.
+          </div>
+        </details>  
+      </div>
+
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#egqu">ÖNE/ARKAYA (Protrusion/Retrusion)</button>
+      <div id="egqu" class="collapse mt-2">🚨 Sonuç: LATERAL LÜKSASYON
+        <details>
+          <summary>⚡ LATERAL LÜKSASYON ACİL PROTOKOLÜ</summary>
+          <div style="white-space: pre-wrap;">
+1. Klinik Tablo
+Durum: Diş soket dışında (çoğunlukla palatinal/lingual yöne) yer değiştirmiştir.
+Mobilite: Kemik içinde kilitli kaldığı için sallanmaz.
+Bulgular: Vurunca yüksek/metalik ses verir, canlılık testi negatiftir, dişeti oluğunda kanama olabilir.
+
+2. Acil Müdahale
+Repozisyon: Anestezi altında parmak basısıyla yerine oturt ve radyografiyle kontrol et.
+Zorlanma: Diş oturmuyorsa güç kullanma. 2 hafta bekle, sonra hareketli apareyle düzelt.
+Splint: 4 hafta esnek splint uygula. Marjinal kemik kırığı varsa süreyi 3-4 hafta uzat.
+
+3. Pulpa Protokolü
+Açık Apeks: Hemen kanal tedavisi yapma, takip et. Sadece nekroz gelişirse apeksifikasyon uygula.
+Kapalı Apeks: Nekroz gelişenlerde 2 hafta içinde KESİNLİKLE kanal tedavisine başla.
+Rezorpsiyon Önlemi: İltihabi rezorpsiyona karşı kanala kalsiyum hidroksit koy. 3 ay sonraki kontrolde lezyon yoksa daimi dolguyu tamamla.
+          </div>
+        </details>  
+      </div>
+    </div>
+  </div>
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 6" x-transition style="display: none;">
+    <div>
+      <h4>Dişte gevşeme/sallanma (mobilite) var mı?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#niqu">Evet</button>
+      <div id="niqu" class="collapse mt-2">🚨 Sonuç: ALVEOL KIRIĞI
+        <details>
+          <summary>⚡ ALVEOL KIRIĞI ACİL PROTOKOLÜ</summary>
+          <div style="white-space: pre-wrap;">
+1. Klinik Tablo
+Durum: Alveol soket duvarının veya alveoler proçesin (dişi çevreleyen kemiğin) kırılması durumudur.
+Teşhis: Tek bir dişin değil, grup halindeki dişlerin birlikte blok halinde sallanmasıyla (grup mobilite testi) tespit edilir.
+Seyir: Sıklıkla kök kırıkları veya lüksasyon (yer değiştirme) yaralanmalarıyla birlikte görülür. Kök kırığıyla beraber olan alveol kırıkları çoğunlukla sorunsuz iyileşir.
+
+2. Acil Müdahale
+Repozisyon: Travmaya uğrayan dişi yerine oturturken bir dirençle karşılaşırsan (örn. labial alveol kemik kırığı), önce alveol soketini (kırık kemik parçasını) yerine oturt.
+Splint: Kırık kemiğin sabitlenmesi için 4 hafta esnek splint uygula. Eğer lateral lüksasyon vakasında marjinal kemik kırığı da varsa splint süresini 3-4 hafta daha uzat.
+
+3. Pulpa Protokolü
+Takip: Kırığa eşlik eden dişin ana travma tipine (avulsiyon, lüksasyon vb.) ait açık/kapalı apeks kurallarını uygula ve etkilenen dişlerin canlılığını mutlaka vitalite testleriyle düzenli olarak takip et.
+          </div>
+        </details>  
+      </div>
+      <button @click="adim = 7" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+    </div>
+  </div>
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 7" x-transition style="display: none;">
+    <div>
+      <h4>Vurmaya (perküsyona) karşı hassasiyet var mı?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#tequ">Evet</button>
+      <div id="tequ" class="collapse mt-2">🚨 Sonuç: KONKÜZYON
+        <details>
+          <summary>⚡ KONKÜZYON (SARSILMA) ACİL PROTOKOLÜ</summary>
+          <div style="white-space: pre-wrap;">
+1. Klinik Tablo
+Durum: Dişte herhangi bir yer değiştirme veya anormal bir sallanma (mobilite) yoktur.
+Bulgular: Vurmaya (perküsyon) karşı artmış bir hassasiyet vardır. Başlangıçta pulpa canlılık (vitalite) testlerine cevap vermeyebilir.
+
+2. Acil Müdahale
+İşlem: Çoğu zaman spesifik bir tedavi uygulama. Sadece dişi oklüzyondan (kapanıştan) hafifçe uzaklaştır.
+Hasta Uyarısı: Duyarlılık azalıncaya kadar hastaya o dişle ısırma ve çiğneme yapmamasını tembihle.
+
+3. Pulpa Protokolü ve Takip
+Takip: Pulpa vitalite testlerini 1, 3, 6 ve 12 aylık aralıklarla mutlaka tekrarla.
+Komplikasyon Riski: İlerleyen dönemde dişte pulpa nekrozu veya kök kanalında tıkanma (obliterasyon) gelişebileceği için düzenli kontrolü aksatma.
+          </div>
+        </details>  
+      </div>
+      <button @click="adim = 8" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Hayır</button>
+    </div>
+  </div>
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 8" x-transition style="display: none;">
+    <div>
+      <h4>Gözle görülür bir kırık (fraktür) var mı?</h4>
+      <button @click="adim = 9" class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3">Evet</button>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#elqu">Hayır</button>
+      <div id="elqu" class="collapse mt-2">✅ Sonuç: SAĞLIKLI</div>
+    </div>
+  </div>
+  <div class="card shadow-lg p-4 p-md-5 wizard-card" x-show="adim === 9" x-transition style="display: none;">
+    <div>
+      <h4>Kırık hattı diş eti kenarının (gingival marjin) altında mı?</h4>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#sequ">Evet</button>
+      <div id="sequ" class="collapse mt-2">🚨 Sonuç: KURON-KÖK KIRIĞI
+        <div style="white-space: pre-wrap;">
+⚡ KRON-KÖK KIRIĞI ACİL PROTOKOLÜ
+Durum: Kırık hattı mine, dentin ve sement dokularını kapsar. Pulpanın açılmış veya açılmamış olmasına göre "komplike" veya "komplike olmayan" olarak ikiye ayrılır.
+Bulgular: Kırık hattı genellikle dişeti altına (subgingival) doğru uzanır. Üst (koronal) kırık parçası hareketlidir ve sadece periodontal liflerle dişetine tutunur. Bu kırıklar ağırlıklı olarak periodontal (diş çevresi doku) bir sorun oluşturur.
+Radyografi: Kırığın sadece dudak (labial) tarafı görülebilir, dile bakan (lingual) yöndeki uzantısı radyografide izlenemez.
+        </div>
+        <details>
+          <summary>1. Komplike Olmayan Kron-Kök Kırığı (Pulpa Kapalı)</summary>
+          <div style="white-space: pre-wrap;">
+İlk İşlem: Anestezi altında hareketli koronal parçayı hemen çıkar.
+Cerrahi İşlem: Kırık hattını açığa çıkarmak için restorasyon öncesinde dişeti kesimi (gingivektomi) ve duruma göre kemik düzenlemesi (osteotomi) yap.
+Tedavi: Açığa çıkan dentin kanalcıklarını ve pulpayı koruyarak dişi orijinal fonksiyonuna ve estetiğine uygun şekilde restore et.
+          </div>
+        </details>
+        <details>
+          <summary>2. Komplike Kron-Kök Kırığı (Pulpa Açık)</summary>
+          <div style="white-space: pre-wrap;">
+Sığ Kırık (Kök servikal 1/3 veya daha azı ile sınırlıysa): Kırık parçayı uzaklaştır, osteotomi ve gingivektomi ile kırık hattını açığa çıkar. Dişeti iyileşmesini ve kök kanal tedavisini tamamladıktan sonra post destekli restorasyon yap.
+Derin Kırık - Cerrahi Ekstrüzyon (Kırık hattı daha derindeyse): Dişi çekerek alveol kemiğinin 1-3 mm üzerinde (koronalinde) tekrar yerine oturt. Dişi splint ile sabitle, 3-4 hafta sonra kök kanal tedavisini tamamla ve 2 ay içinde post destekli onarım yap.
+Derin Kırık - Ortodontik Ekstrüzyon: Önce koronal parçayı çıkar. Açık apeksli dişte servikal pulpotomi, kapalı apeksli dişte pulpektomi (kanal tedavisi) yap. Ortodontik kuvvet uygulayarak dişi 4 hafta süreyle dışarı çek. Sonrasında dişi geçici olarak restore et, 6 ay boyunca komşu dişlere splintle ve ardından daimi restorasyona geç.
+          </div>
+        </details>
+      </div>
+      <button class="btn btn-info btn-lg btn-block font-weight-bold py-3 shadow-sm mt-3" data-toggle="collapse" data-target="#egqu">Hayır</button>
+      <div id="egqu" class="collapse mt-2">🚨 Sonuç: KURON KIRIĞI
+        <div style="white-space: pre-wrap;">
+⚡ KRON KIRIĞI ACİL PROTOKOLÜ
+        </div>
+        <details>
+          <summary>1. Minenin Tam Olmayan Kırığı (Çatlaklar)</summary>
+          <div style="white-space: pre-wrap;">
+Durum: Dişe gelen doğrudan darbe sonucu minede çatlaklar oluşur, pulpa nekrozu tehlikesi azdır. Dişte herhangi bir duyarlılık bulunmayabilir.
+Teşhis: Çatlak hatlarını incelemek için dişe paralel bir ışık kaynağı tut (transillüminasyon yöntemi kullan).
+Tedavi: Gıda renklenmelerini önlemek için çatlak hattını rezinlerle ört, flor uygula. Pulpa damarlanması zarar görmüş olabileceğinden 5 yıl boyunca düzenli vitalite testi yap.
+          </div>
+        </details>
+        <details>
+          <summary>2. Komplike Olmayan Kron Kırığı (Pulpa Kapalı)</summary>
+          <div style="white-space: pre-wrap;">
+Durum: Mine ve dentin kırılmıştır ancak pulpa açığa çıkmamıştır. Perküsyonda duyarlılık yoktur ve dişin mobilitesi normal sınırlardadır.
+Tedavi (Sığ Kırık): Kalan dentin kalınlığı 0.5 mm'den fazlaysa asitleme ve bonding işlemleri uygulayarak kompozitle restore et. Alternatif olarak estetik için kendi kırık kron parçasını yapıştır.
+Tedavi (Derin Kırık): Kalan dentin 0.5 mm'den azsa, pulpayı kalsiyum hidroksit içerikli materyal ile koruyarak restorasyonu tamamla.
+          </div>
+        </details>
+        <details>
+          <summary>3. Komplike Kron Kırığı (Pulpa Açık)</summary>
+          <div style="white-space: pre-wrap;">
+Durum: Kırık mine ve dentini kapsar, pulpa açığa çıkarak ağız ortamına maruz kalır.
+Açık Apeks (Kök Gelişmemiş): Dişi canlı tutmaya çalış; açığa çıkan kısımdan 1-2 mm pulpa dokusunu uzaklaştırarak parsiyel pulpotomi yap ve üzerini kalsiyum hidroksit, MTA veya Biodentine ile ört. Travma üzerinden 72 saatten fazla zaman geçmişse total pulpotomi yap. Başarı şansı düşük olduğu için direkt pulpa kuafajından kesinlikle kaçın. Diş nekrotik hale gelmişse apeksifikasyon veya pulpa revitalizasyonu (revaskülarizasyon) uygula.
+Kapalı Apeks (Kök Gelişmiş): Sadece kompozit restorasyon yeterli olacaksa vital pulpa tedavilerini (parsiyel/total pulpotomi) tercih edebilirsin. Ancak kron-köprü veya kanal içi destek gerektiren karmaşık bir restorasyon planlıyorsan doğrudan pulpektomi (kanal tedavisi) yap. Pulpa nekrotikse zaman kaybetmeden kök kanal tedavisi uygula.
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+  <button @click="adim = 1; sonuc = ''" class="btn btn-dark btn-block mt-4">
+    Sihirbazı tekrar başlat
+  </button>
 </div>
 
   <!--Ayarlar-->
