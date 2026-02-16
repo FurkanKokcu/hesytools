@@ -1,38 +1,63 @@
 [
   {
+    "yas": 0,
+    "bilgiler": [
+      "🟢 71 - Sol Alt Süt Santral SÜRDÜ (6-8. aylar)",
+      "🟢 81 - Sağ Alt Süt Santral SÜRDÜ (6-8. aylar)",
+      "🟡 Diş etlerinde kabarma ve salya artışı gözlenebilir."
+    ]
+  },
+  {
+    "yas": 1,
+    "bilgiler": [
+      "🟢 51 - Sağ Üst Süt Santral SÜRDÜ",
+      "🟢 61 - Sol Üst Süt Santral SÜRDÜ",
+      "🟢 52 - Sağ Üst Süt Lateral SÜRDÜ",
+      "🟢 62 - Sol Üst Süt Lateral SÜRDÜ",
+      "🟢 72 - Sol Alt Süt Lateral SÜRDÜ",
+      "🟢 82 - Sağ Alt Süt Lateral SÜRDÜ"
+    ]
+  },
+  {
+    "yas": 2,
+    "bilgiler": [
+      "🟢 54 - Sağ Üst Süt 1. Azı SÜRDÜ",
+      "🟢 64 - Sol Üst Süt 1. Azı SÜRDÜ",
+      "🟢 74 - Sol Alt Süt 1. Azı SÜRDÜ",
+      "🟢 84 - Sağ Alt Süt 1. Azı SÜRDÜ"
+    ]
+  },
+  {
+    "yas": 3,
+    "bilgiler": [
+      "🟢 53 - Sağ Üst Süt Kanin SÜRDÜ",
+      "🟢 63 - Sol Üst Süt Kanin SÜRDÜ",
+      "🟢 73 - Sol Alt Süt Kanin SÜRDÜ",
+      "🟢 83 - Sağ Alt Süt Kanin SÜRDÜ",
+      "🟢 55 - Sağ Üst Süt 2. Azı SÜRDÜ",
+      "🟢 65 - Sol Üst Süt 2. Azı SÜRDÜ",
+      "🟢 75 - Sol Alt Süt 2. Azı SÜRDÜ",
+      "🟢 85 - Sağ Alt Süt 2. Azı SÜRDÜ"
+    ]
+  },
+  {
     "yas": 4,
     "bilgiler": [
-      "🟡 51 - Sağ Üst Süt Santral (Ağızda)",
-      "🟡 52 - Sağ Üst Süt Lateral (Ağızda)",
-      "🟡 53 - Sağ Üst Süt Kanin (Ağızda)",
-      "🟡 54 - Sağ Üst Süt 1. Azı (Ağızda)",
-      "🟡 55 - Sağ Üst Süt 2. Azı (Ağızda)",
-      "🟡 61 - Sol Üst Süt Santral (Ağızda)",
-      "🟡 62 - Sol Üst Süt Lateral (Ağızda)",
-      "🟡 63 - Sol Üst Süt Kanin (Ağızda)",
-      "🟡 64 - Sol Üst Süt 1. Azı (Ağızda)",
-      "🟡 65 - Sol Üst Süt 2. Azı (Ağızda)",
-      "🟡 71 - Sol Alt Süt Santral (Ağızda)",
-      "🟡 72 - Sol Alt Süt Lateral (Ağızda)",
-      "🟡 73 - Sol Alt Süt Kanin (Ağızda)",
-      "🟡 74 - Sol Alt Süt 1. Azı (Ağızda)",
-      "🟡 75 - Sol Alt Süt 2. Azı (Ağızda)",
-      "🟡 81 - Sağ Alt Süt Santral (Ağızda)",
-      "🟡 82 - Sağ Alt Süt Lateral (Ağızda)",
-      "🟡 83 - Sağ Alt Süt Kanin (Ağızda)",
-      "🟡 84 - Sağ Alt Süt 1. Azı (Ağızda)",
-      "🟡 85 - Sağ Alt Süt 2. Azı (Ağızda)"
+      "🟡 51, 52, 53, 54, 55 - Sağ Üst Süt Grubu (Ağızda)",
+      "🟡 61, 62, 63, 64, 65 - Sol Üst Süt Grubu (Ağızda)",
+      "🟡 71, 72, 73, 74, 75 - Sol Alt Süt Grubu (Ağızda)",
+      "🟡 81, 82, 83, 84, 85 - Sağ Alt Süt Grubu (Ağızda)"
     ]
   },
   {
     "yas": 5,
     "bilgiler": [
-      "⚠️ 6 Yaş Dişleri (16, 26, 36, 46) Diş Eti Altında Hazır!",
-      "🟡 51 - Sağ Üst Süt Santral (Ağızda - Kök erimesi başladı)",
-      "🟡 61 - Sol Üst Süt Santral (Ağızda - Kök erimesi başladı)",
-      "🟡 71 - Sol Alt Süt Santral (Ağızda - Sallanabilir)",
-      "🟡 81 - Sağ Alt Süt Santral (Ağızda - Sallanabilir)",
-      "🟡 (Diğer tüm süt dişleri sağlam şekilde ağızdadır)"
+      "⚠️ 16, 26, 36, 46 - 6 Yaş Dişleri Diş Eti Altında Hazır!",
+      "🟡 51 - Sağ Üst Süt Santral (Kök erimesi başladı)",
+      "🟡 61 - Sol Üst Süt Santral (Kök erimesi başladı)",
+      "🟡 71 - Sol Alt Süt Santral (Sallanabilir)",
+      "🟡 81 - Sağ Alt Süt Santral (Sallanabilir)",
+      "🟡 Diğer tüm süt dişleri sağlam şekilde ağızdadır"
     ]
   },
   {
@@ -46,8 +71,7 @@
       "🔴 81 - Sağ Alt Süt Santral (SALLANIYOR / DÜŞTÜ)",
       "🟢 31 - Sol Alt Daimi Santral (Sürmek Üzere/Sürdü)",
       "🟢 41 - Sağ Alt Daimi Santral (Sürmek Üzere/Sürdü)",
-      "🟡 51, 61 - Üst Süt Santraller (Hala Ağızda)",
-      "🟡 Süt Lateraller, Kaninler ve Azılar (B, C, D, E) Ağızda"
+      "🟡 51, 61 - Üst Süt Santraller (Hala Ağızda)"
     ]
   },
   {
@@ -58,13 +82,7 @@
       "🟢 32 - Sol Alt Daimi Lateral SÜRDÜ (72 Düştü)",
       "🟢 42 - Sağ Alt Daimi Lateral SÜRDÜ (82 Düştü)",
       "🔴 52 - Sağ Üst Süt Lateral (SALLANIYOR)",
-      "🔴 62 - Sol Üst Süt Lateral (SALLANIYOR)",
-      "🟡 53, 63 - Üst Süt Kaninler (Ağızda)",
-      "🟡 54, 64 - Üst Süt 1. Azılar (Ağızda)",
-      "🟡 55, 65 - Üst Süt 2. Azılar (Ağızda)",
-      "🟡 73, 83 - Alt Süt Kaninler (Ağızda)",
-      "🟡 74, 84 - Alt Süt 1. Azılar (Ağızda)",
-      "🟡 75, 85 - Alt Süt 2. Azılar (Ağızda)"
+      "🔴 62 - Sol Üst Süt Lateral (SALLANIYOR)"
     ]
   },
   {
@@ -72,15 +90,9 @@
     "bilgiler": [
       "🟢 12 - Sağ Üst Daimi Lateral SÜRDÜ",
       "🟢 22 - Sol Üst Daimi Lateral SÜRDÜ",
-      "🟢 11, 21 - Daimi Santraller (Mevcut)",
-      "🟢 31, 32, 41, 42 - Alt Keserler (Mevcut)",
-      "🟢 16, 26, 36, 46 - 6 Yaş Dişleri (Mevcut)",
-      "🟡 53, 63 - Üst Süt Kaninler (Sağlam)",
-      "🟡 54, 64 - Üst Süt 1. Azılar (Sağlam)",
-      "🟡 55, 65 - Üst Süt 2. Azılar (Sağlam)",
-      "🟡 73, 83 - Alt Süt Kaninler (Sallanabilir)",
-      "🟡 74, 84 - Alt Süt 1. Azılar (Sağlam)",
-      "🟡 75, 85 - Alt Süt 2. Azılar (Sağlam)"
+      "🟢 11, 21 - Daimi Santraller Mevcut",
+      "🟢 31, 32, 41, 42 - Alt Daimi Keserler Mevcut",
+      "🟡 73, 83 - Alt Süt Kaninler (Sallanabilir)"
     ]
   },
   {
@@ -88,13 +100,8 @@
     "bilgiler": [
       "🟢 33 - Sol Alt Daimi Kanin SÜRDÜ (73 Düştü)",
       "🟢 43 - Sağ Alt Daimi Kanin SÜRDÜ (83 Düştü)",
-      "🔴 74 - Sol Alt Süt 1. Azı (SALLANIYOR)",
-      "🔴 84 - Sağ Alt Süt 1. Azı (SALLANIYOR)",
-      "🔴 54 - Sağ Üst Süt 1. Azı (SALLANIYOR)",
-      "🔴 64 - Sol Üst Süt 1. Azı (SALLANIYOR)",
-      "🟡 53, 63 - Üst Süt Kaninler (Hala Ağızda)",
-      "🟡 55, 65 - Üst Süt 2. Azılar (Hala Ağızda)",
-      "🟡 75, 85 - Alt Süt 2. Azılar (Hala Ağızda)"
+      "🔴 74, 84 - Alt Süt 1. Azılar (SALLANIYOR)",
+      "🔴 54, 64 - Üst Süt 1. Azılar (SALLANIYOR)"
     ]
   },
   {
@@ -104,12 +111,8 @@
       "🟢 24 - Sol Üst 1. Premolar SÜRDÜ (64 Düştü)",
       "🟢 34 - Sol Alt 1. Premolar SÜRDÜ (74 Düştü)",
       "🟢 44 - Sağ Alt 1. Premolar SÜRDÜ (84 Düştü)",
-      "🔴 55 - Sağ Üst Süt 2. Azı (SALLANIYOR)",
-      "🔴 65 - Sol Üst Süt 2. Azı (SALLANIYOR)",
-      "🔴 75 - Sol Alt Süt 2. Azı (SALLANIYOR)",
-      "🔴 85 - Sağ Alt Süt 2. Azı (SALLANIYOR)",
-      "🔴 53, 63 - Üst Süt Kaninler (SALLANIYOR)",
-      "🟡 Alt E'ler ve Üst C'ler düşmek üzeredir."
+      "🔴 55, 65, 75, 85 - Süt 2. Azılar (SALLANIYOR)",
+      "🔴 53, 63 - Üst Süt Kaninler (SALLANIYOR)"
     ]
   },
   {
@@ -121,8 +124,7 @@
       "🟢 45 - Sağ Alt 2. Premolar SÜRDÜ (85 Düştü)",
       "🟢 13 - Sağ Üst Daimi Kanin SÜRDÜ (53 Düştü)",
       "🟢 23 - Sol Üst Daimi Kanin SÜRDÜ (63 Düştü)",
-      "⚪ Ağızda Süt Dişi Kalmadı (Genellikle).",
-      "⚠️ Eğer hala düşmeyen süt dişi varsa çekim endikasyonu olabilir."
+      "⚠️ Süt dişi kalmışsa çekim endikasyonu olabilir"
     ]
   },
   {
@@ -132,9 +134,23 @@
       "🟢 27 - Sol Üst 2. Molar SÜRDÜ",
       "🟢 37 - Sol Alt 2. Molar SÜRDÜ",
       "🟢 47 - Sağ Alt 2. Molar SÜRDÜ",
-      "🟢 Tüm Keserler, Kaninler ve Premolarlar Tamam.",
-      "🟢 1. Molarlar (6 Yaş) Tamam.",
-      "⚪ Toplam 28 Diş Mevcut."
+      "⚪ Toplam 28 Diş Mevcut"
+    ]
+  },
+  {
+    "yas": 13,
+    "bilgiler": [
+      "🟢 Tüm daimi dişlerin oklüzyonu (kapanışı) izlenir.",
+      "🟢 12 yaş dişlerinin (17, 27, 37, 47) sürmesi tamamlanır.",
+      "🟡 Çene kemiği gelişimi ile diş dizilimi son halini alır."
+    ]
+  },
+  {
+    "yas": 14,
+    "bilgiler": [
+      "🟢 11-21, 31-41 gibi keser dişlerin kök ucu kapanışı tamamlanır.",
+      "⚠️ 18, 28, 38, 48 (20 Yaş Dişleri) oluşumu röntgende takip edilmelidir.",
+      "⚪ Fonksiyonel ve estetik diş dizilimi pekişmiştir."
     ]
   }
 ]
