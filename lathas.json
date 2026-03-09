@@ -15,7 +15,7 @@
     "ağız kuruluğu": "kserostomi",
     "ağız kokusu": "halitozis",
     "kanlı tükürük": "hemoptizi (eğer sistemik nedenli) veya travmatik kanama",
-    "kemik çıkıntısı": "torkus mandibularis / torkus palatinus",
+    "kemik çıkıntısı": "torus mandibularis / torus palatinus",
 
     "sinüzit": "sinusitis",
     "kulak iltihabı": "otitis media / otitis externa",
@@ -46,18 +46,42 @@
     "mantar": "kandidiyazis / tinea",
     "uçuk": "herpes simplex",
 
-
     "ağız içi yara (uzun süredir geçmeyen)": "oral skuamöz hücreli karsinom",
     "lenf bezi şişliği": "lenfadenopati",
     "ağızda kitle": "oral neoplazi olasılığı",
     "çene tümörü": "ameloblastoma / odontojenik tümör",
     "kist": "radiküler kist / dentijeröz kist / keratokistik odontojenik tümör",
 
-
     "diş sıkma": "bruksizm",
     "bayılma hikayesi": "senkop öyküsü",
     "sara": "epilepsi",
     "anksiyete": "anksiyete bozukluğu",
+    "sarılık": "hepatit / ikter",
 
-    "sarılık": "hepatit"
-    }
+    "diş çürüğü": "dental karies",
+    "diş ağrısı": "odontalji",
+    "diş taşı": "dental kalkulus",
+    "yirmilik yaş dişi ağrısı": "perikoronitis",
+    "gömülü diş": "impakte diş",
+    "çapraşık diş": "maloklüzyon",
+    "diş sararması": "dental diskolorasyon",
+    "diş çekimi sonrası iltihap": "alveolar osteitis / alveolit",
+    "sinire inmiş çürük": "irreversible pulpitis",
+    "ölü diş": "nekrotik pulpa",
+    "tükürük bezi taşı": "sialolitiazis",
+    "tükürük bezi iltihabı": "sialadenit",
+    "dil bağı": "ankiloglossi",
+    "damak yarığı": "palatoskizis",
+    "dudak yarığı": "keiloskizis",
+
+    "astım": "bronşiyal astım",
+    "mide reflüsü": "gastroözofageal reflü hastalığı (GÖRH)",
+    "mide ülseri": "peptik ülser",
+    "kanın durmaması": "koagülopati / hemofili",
+    "saman nezlesi": "alerjik rinit",
+    "nefes darlığı": "dispne",
+    "göğüs ağrısı": "anjina pektoris",
+    "çarpıntı": "aritmi / taşikardi",
+    "guatr": "tiroid bezi hipertrofisi",
+    "kanser tedavisi": "antineoplastik tedavi / radyoterapi öyküsü"
+}
