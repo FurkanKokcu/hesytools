@@ -246,6 +246,7 @@ h1, h2, h3, h4, h5, h6, label, span {
         <a class="dropdown-item" data-toggle="tab" href="#pedoguide">PedoGuide</a>
         <a class="dropdown-item" data-toggle="tab" href="#profilaksi">Profilaksi Hesaplayıcı</a>
         <a class="dropdown-item" data-toggle="tab" href="#travma">Travma Yardımcısı</a>
+        <a class="dropdown-item" data-toggle="tab" href="#yerml">Yer Tutucu AI</a>
       </div>
     </li>
 
@@ -801,6 +802,14 @@ Kapalı Apeks (Kök Gelişmiş): Sadece kompozit restorasyon yeterli olacaksa vi
   </button>
 </div>
 
+<!--yerml-->
+<div id="yerml" class="container tab-pane fade text-center mt-4">
+  <p>Dikkat! Bu özellik test aşamasındadır. Lütfen kesin olmadığınız tedaviyi yapmayınız.</p>
+  <button class="btn btn-primary" type="button" onclick="init()">Başlat</button>
+  <div id="webcam-container"></div>
+  <div id="label-container"></div>
+</div>
+
   <!--Ayarlar-->
 <div id="settings" class="container tab-pane fade text-center mt-4">
   <div class="input-group">
@@ -829,6 +838,8 @@ Kapalı Apeks (Kök Gelişmiş): Sadece kompozit restorasyon yeterli olacaksa vi
 
 </div>
 <script src="main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 
 
 </body>
