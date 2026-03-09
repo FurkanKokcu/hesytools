@@ -66,6 +66,9 @@ Katkılarınızı bekliyoruz!
 
     Bir Pull Request oluşturun.
 
-## 📄 Lisans
 
-Bu proje GNU GPLv3 lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
+## 📜 Lisans ve Teşekkür
+
+* Bu proje GNU GPLv3 lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
+
+* Veri Seti Teşekkürü: Pedodonti modülündeki makine öğrenmesi modelleri için kullanılan panaromik görüntüler, [Rabia Eda Yılmaz](https://github.com/rabiaedayilmaz) tarafından hazırlanan Children's Dental Panoramic Radiographs Dataset üzerinden temin edilmiştir.
