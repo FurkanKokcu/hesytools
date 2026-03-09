@@ -35,7 +35,7 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
         }
     });
 
-    const URL = "./my_model/";
+const URL = "./my_model/";
 
     let model, webcam, labelContainer, maxPredictions;
 
@@ -44,17 +44,17 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
-        // load the model and metadata
-        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
-        // or files from your local hard drive
-        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
         model = await tmImage.load(modelURL, metadataURL);
         maxPredictions = model.getTotalClasses();
 
-        // Convenience function to setup a webcam
-        const flip = true; // whether to flip the webcam
+        // 1. DEĞİŞİKLİK: Arka kamerada ayna efekti olmaması için flip = false yapıyoruz
+        const flip = false; 
+        
         webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
-        await webcam.setup(); // request access to the webcam
+        
+        // 2. DEĞİŞİKLİK: Arka kamerayı (environment) açması için parametre ekliyoruz
+        await webcam.setup({ facingMode: "environment" }); 
+        
         await webcam.play();
         window.requestAnimationFrame(loop);
 
@@ -72,16 +72,14 @@ $('.dropdown-menu .dropdown-item, .nav-item .nav-link').on('click', function(){
         window.requestAnimationFrame(loop);
     }
 
-    // run the webcam image through the image model
     async function predict() {
-        // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
                 prediction[i].className + ": " + prediction[i].probability.toFixed(2);
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
-    }    
+    }
 
  document.addEventListener('alpine:init', () => {
     Alpine.data('hesyapp', () => ({
