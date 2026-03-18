@@ -1,4 +1,4 @@
-const CACHE_ADI = "hesy-tools-v1"; // Versiyon güncelleyince burayı v2 yaparsın
+const CACHE_ADI = "hesy-tools-v2"; // Versiyon güncelleyince burayı v2 yaparsın
 const DOSYALAR = [
   "./",
   "./index.html",
@@ -11,6 +11,8 @@ const DOSYALAR = [
   "./who.png",
   "./mainlogo-Photoroom.png",
   "./manifest.json",
+  "./materia.css",
+  "./cyborg.css",
   "https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css",
   "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js",
   "https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js",
