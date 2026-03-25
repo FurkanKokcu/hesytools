@@ -114,6 +114,8 @@ const URL = "./my_model/";
         alergycheck:'',
         kilo:'',
         profilaksisonuc:'',
+        probed:'',
+        patientres:'',
         
 
 
@@ -172,16 +174,24 @@ const URL = "./my_model/";
             let gingind
             const kana = Number(this.kanamaging);
             const yuzd = Number(this.yuzging);
+            const probe = Number(this.probed);
             if (yuzd === 0){
                 this.gingsonuc = "Yüz sayısı sıfır olamaz.";
                 return;
             }
             gingind=(kana/yuzd)*100
-            if(gingind>10){
+            if(gingind>10 && probe>4){
+                gingvar = "Hasta periodontitis!"
+            }else if (gingind>10){
                 gingvar = "Gingivitis mevcut!"
-            }else{
+            }else if (probe <= 3){
                 gingvar = "Sağlıklı!"
+            }else if (probe === 4){
+                gingvar = "Azalmış periodonsiyumda sağlık!"
+            }else{
+                gingvar = ""
             }
+
             this.gingsonuc = `Kanama yüzdesi %${gingind}  ${gingvar}`
         },
 
