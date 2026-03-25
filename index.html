@@ -27,6 +27,7 @@
   <!-- Brand -->
   <img src="round-icon-new.png" alt="">
   <a class="navbar-brand" href="#">Hesy Tools</a>
+  
 
 
   <!-- Toggler/collapsibe Button -->
@@ -58,13 +59,8 @@
         <a class="nav-link" data-toggle="tab" href="#hemamath">HemaMath</a>
     </li>
 
-   <li class="nav-item dropdown">
-      <a class="nav-item nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        ProAssist
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" data-toggle="tab" href="#herbst">Herbst</a>
-      </div>
+   <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#herbst">Herbst Testleri</a>
     </li>
 
     <li class="nav-item">
@@ -92,9 +88,18 @@
     </ul>
   </div>
 </nav> 
+    <div class="alert alert-danger alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Uyarı!</strong> Hesy Tools, diş hekimliği pratiğini desteklemek için tasarlanmıştır. Nihai tıbbi kararı vermeden önce bilgilerin doğruluğunu ve güncel kılavuzları kontrol ediniz.
+    </div>
 
 <div class="container mt-4"><div class="tab-content">
   <div id="main" class="container tab-pane active">
+    <div class="alert alert-info alert-dismissible">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <strong>Hesy Tools'un geliştirilmesine destek ol!</strong>
+      <p>Hesy Tools tamamen ücretsiz ve açık kaynaklı bir projedir. Eğer bu aracı günlük pratiğinizde faydalı buluyorsanız, meslektaşlarınızla paylaşarak projenin büyümesine katkıda bulunabilirsiniz.</p>
+    </div>
     <div class="text-center">
     <h1>Hoş Geldiniz</h1>
     <h2 x-text="user"></h2>
@@ -126,51 +131,75 @@
                 value="0">
         </div>
       </form>
-      <input type="number" class="form-control" x-model="diskaybi" placeholder="Diş Kaybı Sayısı">
-      <input type="number" class="form-control" x-model="atasmankaybi" placeholder="Ataşman Kaybı">
+      <p>Diş kaybı sayısı:</p>
+      <input type="number" class="form-control" x-model="diskaybi">
+      <hr>
+      <p>Ataşman kaybı:</p>
+      <input type="number" class="form-control" x-model="atasmankaybi">
+      <hr>
 
       <div class="custom-control custom-switch" data-toggle="collapse" data-target="#sigarak" class="collapse">
         <input type="checkbox" class="custom-control-input" id="switch1" name="example">
         <label class="custom-control-label" for="switch1">Sigara Kullanımı</label>
       </div>    
       <div id="sigarak" class="collapse">
-          <input type="number" class="form-control" x-model="sigara" placeholder="Sigara kullanımı">
+          <input type="number" class="form-control" x-model="sigara">
       </div>
+      <hr>
       <button type="button" class="btn btn-primary" @click="perio()">Hesapla</button>
+      <hr>
       <div x-text="periosonuc"></div>
     </div>
   </div>
   <!--gingivitis-->
   <div id="gingtab" class="container tab-pane fade">
-    <div class="form-group text-center">
+    <div>
       <label for="usr"></label>
-      <input type="number" class="form-control" x-model="kanamaging" placeholder="Kanayan yüzey sayısı">
-      <input type="number" class="form-control" x-model="yuzging" placeholder="Yüzey sayısı">
-      <button type="button" class="btn btn-primary" @click="ging()">Hesapla</button>
-      <div x-text="gingsonuc" class="mt-3 text-center"></div>
+      <p>Kanayan yüzey sayısı:</p>
+      <input type="number" class="form-control" x-model="kanamaging">
+      <hr>
+      <p>Toplam sondlanan yüzey sayısı:</p>
+      <input type="number" class="form-control" x-model="yuzging">
+      <hr>
+      <p>Sondlama derinliği:</p>
+      <input type="number" class="form-control" x-model="probed">
+      <hr>
+      <div class="form-group text-center">
+        <button type="button" class="btn btn-primary" @click="ging()">Hesapla</button>
+        <div x-text="gingsonuc" class="mt-3 text-center"></div>
+      </div>
+      
     </div>
   </div>
 
   <!--Konstab-->
   <div id="konstab" class="container tab-pane fade" x-data="hesyapp">
     <div class="form-group">
-      <input type="text" class="form-control" x-model="hastalik" placeholder="Hastalık ismini giriniz">
+      <p>Konsülte edilecek hastanın hastalığı:</p>
+      <input type="text" class="form-control" x-model="hastalik">
+      <hr>
       </div>
       <div class="form-group">
-      <input type="text" class="form-control" x-model="islem" placeholder="Uygulanacak işlemi yazınız">
+        <p>Uygulanacak işlem:</p>
+        <input type="text" class="form-control" x-model="islem">
+        <hr>
       </div>
       <div class="form-check">
         <label class="form-check-label" for="check1">
           <input type="checkbox" class="form-check-input" x-model="check1" name="option1" value="something">Hasta herhangi bir ilaç kullanmıyor
+          <hr>
         </label>
       </div>
       <br>
       <div class="form-group">
-      <input type="text" class="form-control" x-model="ilac" placeholder="Kullanılan ilacı giriniz">
+      <p>Hastanın kullandığı ilacın ismi:</p>
+      <input type="text" class="form-control" x-model="ilac">
+      <hr>
       </div>
       <div class="form-group text-center">
       <button type="button" class="btn btn-primary" @click="kons()">Konsültasyon Oluştur!</button>
       </div>
+      <hr>
       <div x-text="konssonuc" class="mt-3 text-center">
       </div>
   </div>
@@ -179,7 +208,8 @@
 
 <!--Hemamath-->
 <div id="hemamath" class="container tab-pane fade text-center">
-  <input type="number" class="form-control" x-model="ha1c" placeholder="Hemoglobin A1C seviyesi giriniz...">
+  <p>Hemoglobin A1C seviyesi:</p>
+  <input type="number" class="form-control" x-model="ha1c">
   <hr>
   <label class="form-label">Tansiyon Değeri (mmHg)</label>
 
@@ -191,9 +221,11 @@
   <input type="number" class="form-control" x-model="diaInput" placeholder="Küçük (80)">
 </div>
   <hr>
-  <input type="number" class="form-control" x-model="inr" placeholder="INR değeri giriniz... ">
+  <p>INR değeri:</p>
+  <input type="number" class="form-control" x-model="inr">
   <hr>
-  <input type="number" class="form-control" x-model="hemoglobin" placeholder="Hemoglobin değeri giriniz... ">
+  <p>Hemoglobin değeri:</p>
+  <input type="number" class="form-control" x-model="hemoglobin">
   <hr>
   <button type="button" class="btn btn-primary" @click="hemamathfunc()">Analiz Et</button>
 
@@ -314,7 +346,9 @@
   <!--Profilaksi-->
   
 <div id="profilaksi" class="container tab-pane fade text-center mt-4">
-  <input class="form-control mb-3" type="number" x-model="kilo" placeholder="Çocuğun kilosunu giriniz">
+  <p>Çocuğun kilosu:</p>
+  <input class="form-control mb-3" type="number" x-model="kilo">
+  <hr>
 
   <div class="custom-control custom-checkbox mb-2">
     <input type="checkbox" class="custom-control-input" id="yol_id" x-model="yolcheck">
@@ -643,8 +677,9 @@ Kapalı Apeks (Kök Gelişmiş): Sadece kompozit restorasyon yeterli olacaksa vi
 
   <!--Ayarlar-->
 <div id="settings" class="container tab-pane fade text-center mt-4">
+  <p>Kullanıcı İsmi:</p>
   <div class="input-group">
-    <input type="text" class="form-control" x-model="user" placeholder="Kullanıcı İsmi">
+    <input type="text" class="form-control" x-model="user">
     <button class="btn btn-primary" @click="settingsfunc()">Kaydet</button>
   </div>
   <p x-text="status"></p>
