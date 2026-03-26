@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hesy Tools</title>
   <link rel="icon" type="round-icon" href="round-icon.png">
-  <link rel="stylesheet" href="materia.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
-  <link rel="stylesheet" href="cyborg.css" media="(prefers-color-scheme: dark)">
+  <link rel="stylesheet" href="flatly.css" media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)">
+  <link rel="stylesheet" href="darkly.css" media="(prefers-color-scheme: dark)">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -95,42 +95,91 @@
 
 <div class="container mt-4"><div class="tab-content">
   <div id="main" class="container tab-pane active">
+    <div class="text-center">
+    <h1>Hoş Geldiniz</h1>
+    <h2 x-text="user"></h2>
+    <p>For a reason, for health</p>
     <div class="alert alert-info alert-dismissible">
       <button type="button" class="close" data-dismiss="alert">&times;</button>
       <strong>Hesy Tools'un geliştirilmesine destek ol!</strong>
       <p>Hesy Tools tamamen ücretsiz ve açık kaynaklı bir projedir. Eğer bu aracı günlük pratiğinizde faydalı buluyorsanız, meslektaşlarınızla paylaşarak projenin büyümesine katkıda bulunabilirsiniz.</p>
     </div>
-    <div class="text-center">
-    <h1>Hoş Geldiniz</h1>
-    <h2 x-text="user"></h2>
-    <p>For a reason, for health</p>
+    <div class="card bg-primary text-white">
+      <div class="card-body" style="white-space: pre-wrap;"><strong>Periodontitis Hesaplayıcı:</strong> Klinik ataşman kaybı (CAL), periyodontal nedenli kaybedilen diş sayısı ve sigara anamnezini baz alarak güncel periyodontal evreleme ve derecelendirme (Staging & Grading) yapar.
 
-    <img src="mainlogo-Photoroom.png" class="img-fluid">
+<strong>Gingivitis Hesaplayıcı:</strong> Sondlanan toplam yüzey ve kanayan yüzey sayılarını oranlayarak BOP (Sondlamada Kanama) indeksini hesaplar.
+
+<strong>Konsültasyon: </strong>Hastanın sistemik hastalıkları, medikasyon öyküsü ve planlanan invaziv/non-invaziv dental işleme göre tıp hekimine (örn. kardiyoloji veya endokrinoloji) yönlendirilecek standardize medikal konsültasyon metnini hazırlar.
+
+<strong>HemaMath:</strong> Pre-operatif süreçte TA (Tansiyon), HbA1c, INR ve Hemoglobin değerlerini korele ederek hastanın cerrahi kanama, hemostaz ve yara iyileşmesi risklerini (ASA sınıflandırması perspektifiyle) değerlendirir.
+
+<strong>Reçeteler:</strong> Akut apikal apse, perikoronitis gibi sık karşılaşılan tanılar için yaşa/duruma uygun farmakolojik ajanları, dozaj (mg/tb) ve posoloji bilgileriyle birlikte hazır e-reçete şablonları olarak sunar.
+
+<strong>PedoGuide:</strong> Pediatrik hastaların yaş gruplarına göre diş sürme kronolojisi ve klinik davranış yönlendirmesi stratejilerini barındıran hızlı bir referans rehberidir.
+
+<strong>Profilaksi Hesaplayıcı:</strong> Çocuğun vücut ağırlığı (kg), oral ilaç toleransı ve penisilin alerjisi durumuna göre AHA (Amerikan Kalp Cemiyeti) standartlarında infektif endokardit profilaksisi için antibiyotik tercihini ve miligram bazlı dozunu hesaplar.
+
+<strong>Travma Yardımcısı (Sihirbaz):</strong> Dentoalveoler travma (avülsiyon, lüksasyon, kuron-kök fraktürleri) vakalarında anamnez ve klinik bulgulara göre triyaj yapar. Dişin açık/kapalı apeks durumuna göre endodontik protokolü (revaskülarizasyon, apeksifikasyon, kalsiyum hidroksit uygulaması) ve ideal esnek splintleme süresini adım adım verir.
+
+<strong>Herbst Testleri:</strong> Herbst apareyi/konsepti ile ilgili teorik ve klinik bilgileri indeksler.
+
+<strong>Herbst Testleri:</strong> Erken süt dişi kayıplarında kamera/görüntü işleme kullanarak tahmini yer tutucu endikasyonunu ve tipini belirlemeye çalışan deneysel bir yapay zeka modülüdür.</div>
     </div>
-    <div>
-      
-      <div id="changelog" class="collapse">
-      </div>
+
+    </div>
     </div>
     
-  </div>
+  
   <!--perio tabı-->
   <div id="periotab" class="container tab-pane fade text-center" x-data={atasmankaybi:0}>
+    <div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#who">Who Sondu</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#williams">Williams Sondu</a>
+      </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div id="who" class="container tab-pane active"><br>
+        <form>
+          <div class="form-group">
+            <img class="w-100"src="who.png" alt="">
+
+            <input type="range"
+                  class="form-control-range"
+                  x-model="atasmankaybi"
+                  min="0"
+                  max="12"
+                  step="0.5"
+                  value="0">
+          </div>
+        </form>
+      </div>
+      <div id="williams" class="container tab-pane fade"><br>
+        <form>
+          <div class="form-group">
+            <img class="w-100"src="williams.png" alt="">
+
+            <input type="range"
+                  class="form-control-range"
+                  x-model="atasmankaybi"
+                  min="0"
+                  max="11"
+                  step="1"
+                  value="0">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
     <div class="form-group text-center">
       <label for="usr"></label>
-      <form>
-        <div class="form-group">
-          <img class="w-100"src="who.png" alt="">
-          
-          <input type="range" 
-                class="form-control-range" 
-                x-model="atasmankaybi" 
-                min="0" 
-                max="12" 
-                step="0.5" 
-                value="0">
-        </div>
-      </form>
+
       <p>Diş kaybı sayısı:</p>
       <input type="number" class="form-control" x-model="diskaybi">
       <hr>
